@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
   <% include partials/head %> 
 </head>
-<body>
+<body class="d-flex flex-column h-100">
   <% include partials/menu %>
-  <div class="container-fluid bg-3 text-center">    
-    <h3><%= page %></h3><br>
-    <div class="row">
-      <div class="col-sm-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        
-      </div>
-      <div class="col-sm-4"> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="col-sm-4"> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
+      <h1 class="mt-5">Grupo 04</h1>
+      <ul>
+        <li>Felipe Cerón - jf.ceron10@uniandes.edu.co</li>
+        <li>Juan Hernández - js.hernandez15@uniandes.edu.co</li>
+        <li>Diego Sanabria - df.sanabria761@uniandes.edu.co</li>
+      </ul>
     </div>
-  </div>
+  </main>
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
 </body>
 <% include partials/script %>
 </html>
