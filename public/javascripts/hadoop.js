@@ -13,7 +13,7 @@ $(document).ready(function()
         }
     });
     var $container = $("#hadoop_tbody");
-    var hadoopInfoUri = "http://bigdata-cluster1-18.virtual.uniandes.edu.co:8088/ws/v1/cluster/apps?states=NEW,NEW_SAVING,SUBMITTED,ACCEPTED,RUNNING";
+    var hadoopInfoUri = "/hadoop";
     setInterval(function(){
         $.get(hadoopInfoUri, function(data) {
             if( data.apps.app ) {
