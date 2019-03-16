@@ -1,0 +1,41 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Taller 1</h1>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md">
+    <h2>RA 1</h2>
+    <form>
+        <div class="form-group">
+          <label for="asd">Email address</label>
+          <input type="email" class="form-control" id="asd" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+
+  <div class="col-md">
+    <h2>RA 2</h2>
+    <p>
+      Realice un análisis de oferta y demanda en temporadas. Determine si hay estacionalidad en oferta y demanda por tipo de servicio.
+    </p>
+    <form method="POST" action="/taller-1/ra-2">
+        <div class="form-group">
+          <label for="ra2_fi">Inicio:</label>
+          <input type="text" class="form-control" id="ra2_fi" name="ra2_fi" aria-describedby="ra2_fi_help" placeholder="Ej. 30/08/1991">
+          <small id="ra2_fi_help" class="form-text text-muted">La fecha en la que inicia la temporada.</small>
+        </div>
+        <div class="form-group">
+            <label for="ra2_ff">Fin:</label>
+            <input type="text" class="form-control" id="ra2_ff" name="ra2_ff" aria-describedby="ra2_ff_help" placeholder="Ej. 30/08/1991">
+            <small id="ra2_ff_help" class="form-text text-muted">La fecha en la que termina la temporada.</small>
+          </div>
+        <button type="submit" class="btn btn-primary">Procesar</button>
+      </form>
+  </div>
+
+</div>
+<% include partials/footer %>
