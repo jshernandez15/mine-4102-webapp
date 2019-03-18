@@ -10,15 +10,28 @@ function ordenarFecha(a, b) {
     return 0;
 }
 
+function compararFecha(entrada) {
+    var ra2_fi = $("ra2_fi").val();
+    var ra2_ff = $("ra2_ff").val();
+
+    if ( ordenarFecha(entrada.date, ra2_fi) >= 0 && ordenarFecha(entrada.date, ra2_ff) <= 0) {
+        return true;
+    }
+    return false;
+}
+
 function graficoXColor(color, arr) {
+
+    var filtrado = arr.filter(compararFecha);
+
     var ctx = document.getElementById('myChart' + color.substring(0, 1).toUpperCase()).getContext('2d');
     new Chart(ctx, {
         type: 'line',
         data: {
-            labels: arr.map(el => el.date),
+            labels: filtrado.map(el => el.date),
             datasets: [{
                 label: color,
-                data: arr.map(el => el.count),
+                data: filtrado.map(el => el.count),
                 borderColor: color,
                 backgroundColor: color
             }]
