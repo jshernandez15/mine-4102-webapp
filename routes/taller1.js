@@ -31,8 +31,46 @@ router.get('/rf-3/:id', function(req, res, next) {
 router.get('/ra-2/:id', function(req, res, next) {
   var id = req.params.id;
   model.readRA2(id, function(data) {
-    res.set({'Content-Type': 'application/text'});
-    res.send(data);
+    if( data.includes('No such file or directory') ) res.status(404).send();
+    var positions = [
+      {
+        name: 'green',
+        pos: data.indexOf("green")
+      },
+      {
+        name: 'blue',
+        pos: data.indexOf("blue")
+      },
+      {
+        name: 'yellow',
+        pos: data.indexOf("yellow")
+      }
+    ];
+
+    var initPos = positions
+      .filter(type => type.pos >= 0) // if not found then skiped it
+      .map(type => type.pos) // just take the numbers
+      .reduce(function(valorAnterior, valorActual, indice, vector) {
+        return valorAnterior < valorActual ? valorAnterior : valorActual; // check which value is minor
+      }, data.length); // reduce begins with size
+
+    var result = {};
+    data
+      .substring(initPos)
+      .substring(0, data.lastIndexOf("\n"))
+      .replace(/^\s*[\r\n]/gm, '')
+      .split(/\r/)
+      .map(reglon => 
+        reglon.split(" ").filter(t => t !== "" && t !== "," ) 
+      )
+      .forEach(element => {
+        if(typeof result[element[0]] == "undefined") result[element[0]] = [];
+        result[element[0]].push({
+          date: element[1],
+          count: element[2]
+        });
+      });
+    res.send(result);
   });
 });
 

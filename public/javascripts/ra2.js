@@ -1,26 +1,26 @@
-function creaGrafico() {
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+function ordenarFecha(a, b) {
+    var ma = parseInt(a.date.split("/")[0]);
+    var mb = parseInt(b.date.split("/")[0]);
+    var da = parseInt(a.date.split("/")[1]);
+    var db = parseInt(b.date.split("/")[1]);
+    if ( ma > mb ) return 1;
+    if ( ma < mb ) return -1;
+    if ( da > db ) return 1;
+    if ( da < db ) return -1;
+    return 0;
+}
+
+function graficoXColor(color, arr) {
+    var ctx = document.getElementById('myChart' + color.substring(0, 1).toUpperCase()).getContext('2d');
+    new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['1', '2', '3', '4', '5', '6'],
+            labels: arr.map(el => el.date),
             datasets: [{
-                label: 'Yellow',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: "rgba(225,0,0,0.0)",
-                borderColor: "yellow"
-            },
-            {
-                label: 'Green',
-                data: [1, 23, 13, 51, 2, 13],
-                backgroundColor: "rgba(0,255,0,0.0)",
-                borderColor: "green"
-            },
-            {
-                label: 'Blue',
-                data: [13, 8, 22, 19, 21, 10],
-                backgroundColor: "rgba(0,0,255,0.0)",
-                borderColor: "blue"
+                label: color,
+                data: arr.map(el => el.count),
+                borderColor: color,
+                backgroundColor: color
             }]
         },
         options: {
@@ -38,6 +38,24 @@ function creaGrafico() {
           }  
         }
     });
+}
+
+function creaGrafico(input) {
+
+    if(typeof input['yellow'] !== "undefined") {
+        var amarillos = input['yellow'].sort(ordenarFecha);
+        graficoXColor('yellow', amarillos);
+    }
+
+    if(typeof input['green'] !== "undefined") {
+        var verdes = input['green'].sort(ordenarFecha);
+        graficoXColor('green', verdes);
+    }
+
+    if(typeof input['blue'] !== "undefined") {
+        var azules = input['blue'].sort(ordenarFecha);
+        graficoXColor('blue', azules);
+    }
 }
 
 $(document).ready(function()
@@ -59,13 +77,10 @@ $(document).ready(function()
 
     var checkResponse = function(){
         $.get(ra2Uri, function(data) {
-            if( data.includes('No such file or directory') ) {
-                setTimeout(checkResponse, 6000);
-            }
-            else {
-                $container.html(data);
-                creaGrafico();
-            }
+            $container.html(data);
+            creaGrafico(data);
+        }).fail(function() {
+            setTimeout(checkResponse, 6000);
         });
     };
 
