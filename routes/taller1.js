@@ -55,14 +55,26 @@ router.get('/ra-2/:id', function(req, res, next) {
       }, data.length); // reduce begins with size
 
     var result = {};
-    data
+    var data2 = data
       .substring(initPos)
-      .substring(0, data.lastIndexOf("\n")).substring(0, data.lastIndexOf("\n"))
-      .replace(/^\s*[\r\n]/gm, '')
-      .split(";")
+      .substring(0, data.lastIndexOf("\n")).substring(0, data.lastIndexOf("\n"));
+    console.log(data2);
+
+    var data3 = data2
+      .replace(/^\s*[\r\n]/gm, '');
+    console.log(data3);
+
+    var data4 = data3
+      .split(";");
+    console.log(data4);
+    
+    var data5 = data4
       .map(reglon => 
         reglon.split(" ").filter(t => t !== "" && t !== "," ) 
-      )
+      );
+    console.log(data5);
+
+    data5
       .forEach(element => {
         if(typeof result[element[0]] == "undefined") result[element[0]] = [];
         result[element[0]].push({
@@ -70,6 +82,7 @@ router.get('/ra-2/:id', function(req, res, next) {
           count: element[2]
         });
       });
+      
     res.send(result);
   });
 });
