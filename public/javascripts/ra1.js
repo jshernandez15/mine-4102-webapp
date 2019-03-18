@@ -12,7 +12,7 @@ $(document).ready(function()
             $('#loading_ra1').hide();
         }
     });
-    var $container = $("#ra2_body");
+    var $container = $("#ra1_body");
     var ra2Uri = "/taller-1/ra-1/" + $("#ra1_id").val();
 
     var checkResponse = function(){
