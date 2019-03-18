@@ -56,10 +56,9 @@ router.get('/ra-2/:id', function(req, res, next) {
 
     var result = {};
     data
-      .substring(initPos)
-      .substring(0, data.lastIndexOf("\n"))
-      .replace(/^\s*[\r\n]/gm, '')
-      .split(/\r/)
+      .substring(initPos) // goes to yellow, blue or green first occurrence
+      .substring(0, data.lastIndexOf("\n")).substring(0, data.lastIndexOf("\n")) // remove last two lines
+      .split(";") // split data by ;
       .map(reglon => 
         reglon.split(" ").filter(t => t !== "" && t !== "," ) 
       )
