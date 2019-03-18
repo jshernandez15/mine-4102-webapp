@@ -11,8 +11,8 @@ function ordenarFecha(a, b) {
 }
 
 function compararFecha(entrada) {
-    var ra2_fi = $("ra2_fi").val();
-    var ra2_ff = $("ra2_ff").val();
+    var ra2_fi = $("#ra2_fi").val();
+    var ra2_ff = $("#ra2_ff").val();
 
     if ( ordenarFecha(entrada, {date: ra2_fi}) >= 0 && ordenarFecha(entrada, {date: ra2_ff}) <= 0) {
         return true;
