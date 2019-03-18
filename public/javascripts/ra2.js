@@ -17,7 +17,7 @@ $(document).ready(function()
 
     var checkResponse = function(){
         $.get(ra2Uri, function(data) {
-            if( data.endsWith('No such file or directory') ) {
+            if( data.includes('No such file or directory') ) {
                 setTimeout(checkResponse, 6000);
             }
             else {
