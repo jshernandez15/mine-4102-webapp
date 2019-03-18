@@ -17,9 +17,12 @@ $(document).ready(function()
 
     var checkResponse = function(){
         $.get(ra2Uri, function(data) {
-            $container.html(data);
-        }).fail(function() {
-            setTimeout(checkResponse, 6000);
+            if( data.includes('No such file or directory') ) {
+                setTimeout(checkResponse, 6000);
+            }
+            else {
+                $container.html(data);
+            }
         });
     };
 
