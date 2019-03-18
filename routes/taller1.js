@@ -7,6 +7,25 @@ router.get('/', function(req, res, next) {
   res.render('taller-1', {page:'Taller 1'});
 });
 
+router.post('/ra-1', function(req, res, next) {
+  var data = req.body;
+  var id = uuidv1();;
+  model.sendRA1(id, data.param);
+
+  res.render('t1-ra1', {
+    page: 'RA 1',
+    id: id
+  });
+});
+
+router.get('/ra-1/:id', function(req, res, next) {
+  var id = req.params.id;
+  model.readRA1(id, function(data) {
+    res.set({'Content-Type': 'application/text'});
+    res.send(data);
+  });
+});
+
 router.post('/ra-2', function(req, res, next) {
   var data = req.body;
   var id = uuidv1();;

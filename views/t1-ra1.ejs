@@ -1,0 +1,36 @@
+<% include partials/head %>
+<script src="/javascripts/ra1.js"></script>
+<div class="row">
+  <div class="col-lg">
+      <h1 class="mt-5">RA - 1</h1>
+      <p>
+        Encontrar los patrones de viaje de los usuarios de cada una de las zonas de la ciudad de NY.
+      </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg">
+      <!--h2>Temporada del </h2-->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg">
+    <h2>Resultados</h2>
+    <input type="hidden" value="<%= id %>" id="ra1_id" />
+    <div id="respuesta">
+      <pre>
+        <code id="ra1_body">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            Recuperando la respuesta
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>
+
+<% include partials/hadoop-job %>
+<% include partials/footer %>
