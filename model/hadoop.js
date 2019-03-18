@@ -32,7 +32,7 @@ command.readRF3 = function(id, callback) {
 command.sendRA1 = function(id, data) {
     var SSH = new SSH2Shell({
         server: this.server,
-        commands: ["hadoop jar /home/bigdata04/taller1/ra1v5.jar job.RA1 datos/taxis_subsample output/taller1/RA1_V5_" + id.replace('-', '_') + " -1 -1 0 -1 -1 -1"]
+        commands: ["hadoop jar /home/bigdata04/taller1/ra1v5.jar job.RA1 datos/taxis_subsample output/taller1/RA1_V5_" + id.replace(/-/g, '_') + " -1 -1 0 -1 -1 -1"]
         //commands: ["echo $(pwd)", "ls -l"]
     });
     var callback = function(sessionText) {
@@ -44,7 +44,7 @@ command.sendRA1 = function(id, data) {
 command.readRA1 = function(id, callback) {
     var SSH = new SSH2Shell({
         server: this.server,
-        commands: ["hadoop fs -cat output/taller1/RA1_V5_" + id.replace('-', '_') + "/part-r-00000"]
+        commands: ["hadoop fs -cat output/taller1/RA1_V5_" + id.replace(/-/g, '_') + "/part-r-00000"]
         //commands: ["cat mine-4102/mine-4102-webapp/.gitignore"]
     });
     SSH.connect(callback);
