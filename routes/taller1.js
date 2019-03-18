@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.post('/ra-2', function(req, res, next) {
   var data = req.body;
   var id = uuidv1();;
-  model.send(id);
+  //model.sendRF3(id);
 
   res.render('t1-ra2', {
     page: 'RA 2',
@@ -20,9 +20,17 @@ router.post('/ra-2', function(req, res, next) {
   });
 });
 
+router.get('/rf-3/:id', function(req, res, next) {
+  var id = req.params.id;
+  model.readRF3(id, function(data) {
+    res.set({'Content-Type': 'application/text'});
+    res.send(data);
+  });
+});
+
 router.get('/ra-2/:id', function(req, res, next) {
   var id = req.params.id;
-  model.read(id, function(data) {
+  model.readRA2(id, function(data) {
     res.set({'Content-Type': 'application/text'});
     res.send(data);
   });
