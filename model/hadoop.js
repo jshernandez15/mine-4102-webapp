@@ -32,7 +32,7 @@ command.readRF3 = function(id, callback) {
 command.readRA2 = function(id, callback) {
     var SSH = new SSH2Shell({
         server: this.server,
-        commands: ["hadoop fs -cat output/taller1/RA2_subsample/part-r-00000 | sed 's/\t/ /g'"]
+        commands: ["hadoop fs -cat output/taller1/RA2_subsample/part-r-00000 | sed 's/\t/ /g' | sed 's/[\r\n]/;/g'"]
         //commands: ["cat mine-4102/mine-4102-webapp/samples/part-r-00000"]
     });
     SSH.connect(callback);
