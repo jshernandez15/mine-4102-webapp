@@ -57,7 +57,7 @@ router.get('/ra-2/:id', function(req, res, next) {
     var result = {};
     data
       .substring(initPos)
-      .substring(0, data.lastIndexOf("\n"))
+      .substring(0, data.lastIndexOf("\n")).substring(0, data.lastIndexOf("\n"))
       .replace(/^\s*[\r\n]/gm, '')
       .split(/\r/)
       .map(reglon => 
