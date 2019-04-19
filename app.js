@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var taller1Router = require('./routes/taller1');
+var taller2Router = require('./routes/taller2');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/taller-1', taller1Router);
+app.use('/taller-2', taller2Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
