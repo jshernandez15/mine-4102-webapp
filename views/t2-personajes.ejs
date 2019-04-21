@@ -10,7 +10,15 @@
     <p>
       Visualizar la información básica de personajes o sitios geográficos mencionados. Debe poder relacionar dichas entidades por algún criterio encontrado en su información de base. Por ejemplo, todos los personajes mencionados que nacen en cierto rango de fechas, sitios que son geográficamente cercanos, etc.
     </p>
-    <span></span>
+    <div class="form-inline">
+      <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="personajes" placeholder="username">
+      </div>
+      <button type="button" class="btn btn-primary" onclick="buscar()">Buscar</button>
+    </div>
   </div>
 
 </div>

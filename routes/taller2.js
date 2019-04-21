@@ -20,9 +20,13 @@ router.get('/heatmap', function(req, res, next) {
 
 /* apis */
 
-router.get('/personajes-mongo', function(req, res, next) {
-
-  Menciones.find({"MENTIONED_NAME":"nicolasmaduro"}, function(error, menciones) {
+router.get('/personajes-mongo/:personaje', function(req, res, next) {
+  var personaje = req.params.personaje;
+  Menciones.find({
+    $or: [
+      {AUTHOR: personaje},{MENTIONED_NAME: personaje}
+    ]
+  }, function(error, menciones) {
     res.set({'Content-Type': 'application/json; charset=utf-8'});
     res.send(menciones);
   });
