@@ -1,15 +1,14 @@
 // http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
 $(document).ready(function()
 {
-  $.get("/taller-2/personajes-mongo", function(result) {
+  $.get("/taller-2/personajes-mongo", function(links) {
 
-    var links = result.data;
     var nodes = {};
 
     // Compute the distinct nodes from the links.
     links.forEach(function(link) {
-      link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
-      link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+      link.source = nodes[link.AUTHOR] || (nodes[link.AUTHOR] = {name: link.AUTHOR});
+      link.target = nodes[link.MENTIONED_NAME] || (nodes[link.MENTIONED_NAME] = {name: link.MENTIONED_NAME});
     });
     
     var width = $(document).width(),
@@ -45,8 +44,8 @@ $(document).ready(function()
     var path = svg.append("g").selectAll("path")
         .data(force.links())
       .enter().append("path")
-        .attr("class", function(d) { return "link " + d.type; })
-        .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+        .attr("class", function(d) { return "link suit"; })
+        .attr("marker-end", function(d) { return "url(#suit)"; });
     
     var circle = svg.append("g").selectAll("circle")
         .data(force.nodes())
