@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Menciones = require('../model/menciones');
 var Coyunturas = require('../model/coyunturas');
+var Clasificados = require('../model/clasificados');
 
 router.get('/', function(req, res, next) {
   res.render('taller-2', {page:'Taller 2'});
@@ -49,6 +50,18 @@ router.get('/tagcloud-mongo/:id', function(req, res, next) {
   },function(error, tagcloud) {
     res.set({'Content-Type': 'application/json; charset=utf-8'});
     res.send(tagcloud);
+  });
+});
+
+router.get('/coyuntura-mongo', function(req, res, next) {
+  Clasificados.aggregate([{
+    $group: { 
+      _id: "$CATEGORY_NUMBER", 
+      count: {$sum: 1} 
+    }
+  }],function(error, coyunturas) {
+    res.set({'Content-Type': 'application/json; charset=utf-8'});
+    res.send(coyunturas);
   });
 });
 

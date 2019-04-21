@@ -1,4 +1,4 @@
-d3.json("/javascripts/polaridad.json", function(data) {
+d3.json("/taller-2/coyuntura-mongo", function(data) {
 
   ///////////////////////
   // Chart Size Setup
@@ -16,11 +16,23 @@ d3.json("/javascripts/polaridad.json", function(data) {
   ///////////////////////
   // Scales
   var x = d3.scale.ordinal()
-      .domain(data['RECORDS'].map(function(d) { return d['topic']; }))
+      .domain(data.map(function(d) { 
+        var value = "";
+        switch(d['_id']) {
+            case 1: value = "Informativo"; break;
+            case 2: value = "Solidario"; break;
+            case 3: value = "Protectivo"; break;
+            case 4: value = "Culpa al gobierno"; break;
+            case 5: value = "Cr&iacute;tico"; break;
+            case 6: value = "Argumentativo"; break;
+            case 0: value = "Ninguna"; break;
+        }
+        return value;
+       }))
       .rangeRoundBands([0, width], .1);
 
   var y = d3.scale.linear()
-      .domain([0, d3.max(data['RECORDS'], function(d) { return d['count']; }) * 1.1])
+      .domain([0, d3.max(data, function(d) { return d['count']; }) * 1.1])
       .range([height, 0]);
 
   ///////////////////////
@@ -54,10 +66,22 @@ d3.json("/javascripts/polaridad.json", function(data) {
   ///////////////////////
   // Bars
   var bar = chart.selectAll(".bar")
-      .data(data['RECORDS'])
+      .data(data)
     .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d['topic']); })
+      .attr("x", function(d) { 
+        var value = "";
+        switch(d['_id']) {
+            case 1: value = "Informativo"; break;
+            case 2: value = "Solidario"; break;
+            case 3: value = "Protectivo"; break;
+            case 4: value = "Culpa al gobierno"; break;
+            case 5: value = "Cr&iacute;tico"; break;
+            case 6: value = "Argumentativo"; break;
+            case 0: value = "Ninguna"; break;
+        }
+        return x(value); 
+      })
       .attr("y", height)
       .attr("width", x.rangeBand())
       .attr("height", 0);
