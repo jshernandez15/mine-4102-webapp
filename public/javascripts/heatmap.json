@@ -1,0 +1,22 @@
+[
+	{
+		"AUTHOR": "alvarouribevelez",
+		"CATEGORY_NUMBER": "Ninguno",
+		"ACTIVIDAD": 20
+	},
+		{
+		"AUTHOR": "alvarouribevelez",
+		"CATEGORY_NUMBER": "Critico",
+		"ACTIVIDAD": 100
+	},
+		{
+		"AUTHOR": "alvarouribevelez",
+		"CATEGORY_NUMBER": "Protectivo",
+		"ACTIVIDAD": 90
+	},
+	{
+		"AUTHOR": "noticiasrcn",
+		"CATEGORY_NUMBER": "Protectivo",
+		"ACTIVIDAD": 100
+	}
+]

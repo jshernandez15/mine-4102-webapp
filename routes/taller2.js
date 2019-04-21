@@ -3,6 +3,7 @@ var router = express.Router();
 var Menciones = require('../model/menciones');
 var Coyunturas = require('../model/coyunturas');
 var Clasificados = require('../model/clasificados');
+var Actividades = require('../model/actividades');
 
 router.get('/', function(req, res, next) {
   res.render('taller-2', {page:'Taller 2'});
@@ -30,7 +31,25 @@ router.get('/heatmap', function(req, res, next) {
   res.render('t2-heatmap', {page:'Tagcloud'});
 });
 
+router.get('/relaciones', function(req, res, next) {
+  res.render('t2-heatmap', {page:'Relaciones'});
+});
+
 /* apis */
+
+router.get('/heatmap-mongo', function(req, res, next) {
+  Actividades.find({},
+    ['AUTHOR', 'CATEGORY_NUMBER', 'ACTIVIDAD'],{
+      skip:0, // Starting Row
+      limit:30, // Ending Row
+      sort:{
+        ACTIVIDAD: -1 //Sort by Date Added DESC
+      }
+    },function(error, actividades) {
+    res.set({'Content-Type': 'application/json; charset=utf-8'});
+    res.send(actividades);
+  });
+});
 
 router.get('/personajes-mongo/:personaje', function(req, res, next) {
   var personaje = req.params.personaje;
