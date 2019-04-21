@@ -43,7 +43,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var mongoDB = 'mongodb://127.0.0.1:27017/Grupo04';
+var mongo_config = {
+  server: {     
+      host: process.env.MONGO_HOST || '127.0.0.1',
+      port: process.env.MONGO_PORT || 27017
+  }
+};
+
+var mongoDB = "mongodb://" + mongo_config.server.host + ":" + mongo_config.server.port + "/Grupo04";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 var db = mongoose.connection;
