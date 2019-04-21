@@ -16,6 +16,24 @@
       <h2 class="mt-5">Polaridad</h2>
       <svg class="polaridad"></svg>
     </div>
+    <h2 class="mt-5">Twitts aleatorios</h2>
+    <div id="twitts">
+      <% twitts.forEach(function(twitt){ %>
+      <div class="col-sm-12 strip" style="border-left: 3px solid #<% switch (twitt.CATEGORY_NUMBER) {
+        case 0 : %>b5b5b5<% break;
+        case 1 : %>e3ffe0<% break;
+        case 2 : %>87e87d<% break;
+        case 3 : %>32ad26<% break;
+        case 4 : %>f9a7be<% break;
+        case 5 : %>ef2b2b<% break;
+        case 6 : %>000000<% break;
+        } %>;">
+        <img src="https://loremflickr.com/50/50/people?random=<%= Math.random() %>" alt="profile image" width="50px" height="50px" />
+        <strong><%= twitt.AUTHOR %></strong> <span class="light"> @<%= twitt.AUTHOR.toLowerCase() %> - <span class="time"><%= twitt.PUBLISH_DATE %></span></span><br>
+        <%= twitt.CONTENT %>
+      </div>
+      <% }); %>
+    </div>
     <h2 class="mt-5">Informativo</h2>
     <div id="chart1"></div>
     <h2 class="mt-5">Solidario</h2>

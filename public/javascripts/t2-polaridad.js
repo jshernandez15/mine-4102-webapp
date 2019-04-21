@@ -23,7 +23,7 @@ d3.json("/taller-2/coyuntura-mongo", function(data) {
             case 2: value = "Solidario"; break;
             case 3: value = "Protectivo"; break;
             case 4: value = "Culpa al gobierno"; break;
-            case 5: value = "Cr&iacute;tico"; break;
+            case 5: value = "Crítico"; break;
             case 6: value = "Argumentativo"; break;
             case 0: value = "Ninguna"; break;
         }
@@ -76,7 +76,7 @@ d3.json("/taller-2/coyuntura-mongo", function(data) {
             case 2: value = "Solidario"; break;
             case 3: value = "Protectivo"; break;
             case 4: value = "Culpa al gobierno"; break;
-            case 5: value = "Cr&iacute;tico"; break;
+            case 5: value = "Crítico"; break;
             case 6: value = "Argumentativo"; break;
             case 0: value = "Ninguna"; break;
         }

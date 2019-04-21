@@ -13,7 +13,17 @@ router.get('/personajes', function(req, res, next) {
 });
 
 router.get('/tagcloud', function(req, res, next) {
-  res.render('t2-tagcloud', {page:'Tagcloud'});
+  Clasificados.aggregate([{
+      $sample: {size: 5},
+    },{
+      $match : {AUTHOR : { "$exists": true, "$ne": null }
+    }
+  }],function(error, twitts) {
+    res.render('t2-tagcloud', {
+      page:'Tagcloud',
+      twitts: twitts
+    });
+  });
 });
 
 router.get('/heatmap', function(req, res, next) {
