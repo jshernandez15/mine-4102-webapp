@@ -3,7 +3,7 @@ var text_string = "Hagan lo que les de la puta gana, No quiero saber nada de ese
 drawWordCloud(text_string);
 
 function drawWordCloud(text_string){
-  var common = "a,ante,lo,les,la,que,de,ni,los,las,le,y";
+  var common = "a,ante,lo,les,la,que,de,ni,los,las,le,y,el";
 
   var word_count = {};
 

@@ -71,3 +71,42 @@ text {
 svg {
   border: #333 1px solid;
 }
+
+
+/** bar chart **/
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: lightblue;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.tooltip {
+  position: absolute;
+  padding: 10px;
+  font: 12px sans-serif;
+  background: #222;
+  color: #fff;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0.9;
+  visibility: hidden;
+}
