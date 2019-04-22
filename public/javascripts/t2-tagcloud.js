@@ -9,7 +9,7 @@ function pintaTema(tema) {
   
     var svg_location = "#chart" + tema;
     var width = $(document).width() - 500;
-    var height = $(document).height() - 500;
+    var height = 700;
   
     var fill = d3.scale.category20();
   

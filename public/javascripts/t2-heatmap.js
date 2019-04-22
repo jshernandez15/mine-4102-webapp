@@ -3,14 +3,15 @@ var itemSize = 22,
     margin = {top: 120, right: 20, bottom: 20, left: 110};
     
 var width = 750 - margin.right - margin.left,
-    height = 800 - margin.top - margin.bottom;
+    height = 6300;
 
 var formatDate = d3.time.format("%Y-%m-%d");
 
 d3.json('/taller-2/heatmap-mongo', function ( response ) {
 
-var max = d3.max(response, function(d) { return d['ACTIVIDAD']; });
-var min = d3.min(response, function(d) { return d['ACTIVIDAD']; });
+var max = d3.max(response, function(d) { return parseInt(d['ACTIVIDAD']); });
+var min = d3.min(response, function(d) { return parseInt(d['ACTIVIDAD']); });
+console.log("min:" + min + ",max:" + max);
 
 var data = response.map(function( item ) {
     var newItem = {};
@@ -27,7 +28,7 @@ var data = response.map(function( item ) {
     }
     newItem.product = tag;
     newItem.value = (item.ACTIVIDAD - min) / (max - min);
-
+    console.log("original" + item.ACTIVIDAD + ", calculado:" + newItem.value);
     return newItem;
 })
 
@@ -58,7 +59,7 @@ var yAxis = d3.svg.axis()
 
 var colorScale = d3.scale.linear()
     .domain([0, 1])
-    .range(["pink", "red"]);
+    .range(['yellow', 'red']);
 
 var svg = d3.select('.heatmap')
     .append("svg")

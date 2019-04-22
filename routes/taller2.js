@@ -16,9 +16,13 @@ router.get('/personajes', function(req, res, next) {
 
 router.get('/tagcloud', function(req, res, next) {
   Clasificados.aggregate([{
-      $sample: {size: 5},
+      $sample: {size: 10},
     },{
-      $match : {AUTHOR : { "$exists": true, "$ne": null }
+    $match : {
+      $and: [ 
+        { AUTHOR: { "$exists": true, "$ne": null } },
+        { CONTENT: { "$exists": true, "$ne": "" } }
+      ]  
     }
   }],function(error, twitts) {
     res.render('t2-tagcloud', {
@@ -39,10 +43,12 @@ router.get('/relaciones', function(req, res, next) {
 /* apis */
 
 router.get('/heatmap-mongo', function(req, res, next) {
-  Actividades.find({},
+  Actividades.find({
+    AUTHOR: { $ne: null }
+  },
     ['AUTHOR', 'CATEGORY_NUMBER', 'ACTIVIDAD'],{
       skip:0, // Starting Row
-      limit:30, // Ending Row
+      limit:300, // Ending Row
       sort:{
         ACTIVIDAD: -1 //Sort by Date Added DESC
       }
