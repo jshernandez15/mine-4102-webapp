@@ -40,6 +40,10 @@ router.get('/relaciones', function(req, res, next) {
   res.render('t2-heatmap', {page:'Relaciones'});
 });
 
+router.get('/anotado', function(req, res, next) {
+  res.render('t2-anotado', {page:'Anotado'});
+});
+
 /* apis */
 
 router.get('/heatmap-mongo', function(req, res, next) {
