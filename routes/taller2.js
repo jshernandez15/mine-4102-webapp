@@ -1,4 +1,5 @@
 var express = require('express');
+const fetch = require('node-fetch');
 var router = express.Router();
 var Menciones = require('../model/menciones');
 var Coyunturas = require('../model/coyunturas');
@@ -61,6 +62,16 @@ router.get('/personajes-mongo/:personaje', function(req, res, next) {
     res.set({'Content-Type': 'application/json; charset=utf-8'});
     res.send(menciones);
   });
+});
+
+router.get('/personajes-wikipedia/:personaje', function(req, res, next) {
+  var personaje = req.params.personaje;
+  fetch("https://es.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + personaje + "&utf8=&format=json")
+    .then(data => data.json())
+    .then(json => {
+      res.set({'Content-Type': 'application/json; charset=utf-8'});
+      res.send(json);
+    });
 });
 
 router.get('/tagcloud-mongo/:id', function(req, res, next) {

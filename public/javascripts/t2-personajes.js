@@ -1,5 +1,18 @@
-// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
+// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day
 function buscar() {
+  $.get("/taller-2/personajes-wikipedia/"+$("#personajes").val(), function(datos) {
+    var search = datos.query.search;
+    $("#wikipedia_row").show();
+    $("#wikipedia").empty();
+    if(typeof search === "undefined" || search.length == 0) {
+      $("#wikipedia").append("<p>No se encontraron registros para esta búsqueda.</p>");
+    }
+    else {
+      search.forEach(registro => {
+        $("#wikipedia").append("<p><b>" + registro.title + "</b> " + registro.snippet + "</p>");
+      });
+    }
+  });
   $.get("/taller-2/personajes-mongo/"+$("#personajes").val(), function(links) {
 
     $( "svg" ).remove();

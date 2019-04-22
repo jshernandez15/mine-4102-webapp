@@ -111,6 +111,12 @@ svg {
   visibility: hidden;
 }
 
+/* wikipedia */
+
+.searchmatch {
+  color: #f2b;
+}
+
 /* tweets */
 
 
