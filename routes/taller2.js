@@ -5,6 +5,7 @@ var Menciones = require('../model/menciones');
 var Coyunturas = require('../model/coyunturas');
 var Clasificados = require('../model/clasificados');
 var Actividades = require('../model/actividades');
+var Bonos = require('../model/bonos');
 
 router.get('/', function(req, res, next) {
   res.render('taller-2', {page:'Taller 2'});
@@ -44,7 +45,19 @@ router.get('/anotado', function(req, res, next) {
   res.render('t2-anotado', {page:'Anotado'});
 });
 
+router.get('/bono', function(req, res, next) {
+  res.render('t2-bono', {page:'Bono'});
+});
+
 /* apis */
+
+router.get('/bono-mongo/', function(req, res, next) {
+  Bonos.find({
+  }, function(error, ciudades) {
+    res.set({'Content-Type': 'application/json; charset=utf-8'});
+    res.send(ciudades);
+  });
+});
 
 router.get('/heatmap-mongo', function(req, res, next) {
   Actividades.find({
