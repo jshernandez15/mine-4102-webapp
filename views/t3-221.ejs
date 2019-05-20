@@ -1,0 +1,29 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Análisis de contenido en documentos semiestructurados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <h2>
+            De las personas, relacione aquellas de quienes se conmemoran su muerte o nacimiento en rangos de fechas.
+        </h2>
+        <div>
+            <p>
+                Personas que <%= queHicieron %> entre <%= fi %> y <%= ff %>
+            </p>
+        </div>
+        <% personas.forEach(function(persona) { %>
+        <div class="timeline-time">
+            <a href="<%= persona.person.value %>"><%= persona.name.value %></a> - 
+            <% if(queHicieron == 'nacieron'){ %>
+                <%= persona.birthdate.value %>
+            <% } else{ %>  
+                <%= persona.deathdate.value %>
+            <% } %>
+        </div>
+        <% }) %>        
+    </div>
+</div>
+<% include partials/footer %>

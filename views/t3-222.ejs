@@ -1,0 +1,19 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Análisis de contenido en documentos semiestructurados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <h2>
+            De los sitios, relacione aquellos que se encuentran geográficamente cercanos o vinculados. Por ejemplo, una ciudad está en un país, dos ciudades están en el mismo país, etc..
+        </h2>
+        <% lugares.forEach(function(lugar) { %>
+        <div class="timeline-time">
+            <%= lugar.place1_name.value %> y <%= lugar.place2_name.value %> tiene una relación de <a href="<%= lugar.relationship.value %>"><%= lugar.relationship.value.substring(lugar.relationship.value.lastIndexOf("/")+1) %></a>
+        </div>
+        <% }) %>        
+    </div>
+</div>
+<% include partials/footer %>

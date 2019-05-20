@@ -1,0 +1,27 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Integración y enriquecimiento semántico en tiempo real</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <h2>
+                Ubicar geográficamente cada lugar encontrado con su caracterización: coordenadas, sitio, ciudad, departamento, país.
+        </h2>
+        <% lugares.forEach(function(lugar) { %>
+            <div>
+                <h3>
+                    <a href="<%= lugar.place.value %>"><%= lugar.place_name.value %></a>
+                    
+                </h3>
+                <% combinaciones.forEach(function(combi) { %>
+                    <% if(combi.llave in lugar){ %>
+                        <p><%= combi.valor %>: <%= lugar[combi.llave].value %></p>
+                    <% } %>
+                <% }) %>
+            </div>
+        <% }) %>         
+    </div>
+</div>
+<% include partials/footer %>

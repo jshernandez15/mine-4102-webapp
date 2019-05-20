@@ -1,0 +1,98 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Taller 3</h1>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md">
+    <p>
+      De las personas, relacione aquellas de quienes conmemoran su <strong>nacimiento</strong> en rangos de fechas.
+    </p>
+    <form method="POST" action="/taller-3/2.2.1/nacieron">
+      <div class="form-group">
+        <label for="persona_fi">Inicio:</label>
+        <input type="text" class="form-control" id="persona_fi" name="persona_fi" aria-describedby="persona_fi_help" placeholder="Ej. 1900-01-23">
+        <small id="persona_fi_help" class="form-text text-muted">La fecha en la que inicia la temporada.</small>
+      </div>
+      <div class="form-group">
+          <label for="persona_ff">Fin:</label>
+          <input type="text" class="form-control" id="persona_ff" name="persona_ff" aria-describedby="persona_ff_help" placeholder="Ej. 1900-01-23">
+          <small id="persona_ff_help" class="form-text text-muted">La fecha en la que termina la temporada.</small>
+        </div>
+      <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+  </div>
+
+  <div class="col-md">
+    <p>
+      De las personas, relacione aquellas de quienes se conmemoran su <strong>muerte</strong> en rangos de fechas.
+    </p>
+    <form method="POST" action="/taller-3/2.2.1/murieron">
+      <div class="form-group">
+        <label for="persona_fi">Inicio:</label>
+        <input type="text" class="form-control" id="persona_fi" name="persona_fi" aria-describedby="persona_fi_help" placeholder="Ej. 1900-01-23">
+        <small id="persona_fi_help" class="form-text text-muted">La fecha en la que inicia la temporada.</small>
+      </div>
+      <div class="form-group">
+          <label for="persona_ff">Fin:</label>
+          <input type="text" class="form-control" id="persona_ff" name="persona_ff" aria-describedby="persona_ff_help" placeholder="Ej. 1900-01-23">
+          <small id="persona_ff_help" class="form-text text-muted">La fecha en la que termina la temporada.</small>
+        </div>
+      <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+  </div>
+
+  <div class="col-md">
+    <p>
+      De los sitios, relacione aquellos que se encuentran geográficamente cercanos o vinculados. Por ejemplo, una ciudad está en un país, dos ciudades están en el mismo país, etc.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/2.2.2">Ver resultados</a>
+  </div>
+
+</div>
+<br />
+<div class="row">
+
+  <div class="col-md">
+    <p>
+      De las entidades de dominio, identifique relaciones interesantes. Por ejemplo, si el tema es cine, un actor se relaciona con sus películas.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/2.2.3">Ver resultados</a>
+  </div>
+  <div class="col-md">
+    <p>
+      Ubicar geográficamente cada lugar encontrado con su caracterización: coordenadas, sitio, ciudad, departamento, país.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/3.1">Ver resultados</a>
+  </div>
+  <div class="col-md">
+    <p>
+      Para cada persona identificada, de ser posible encuentre su ubicación, fecha y lugar de nacimiento, género musical en el cual se destaca. Identifique su grupo familiar y las otras personas con las que se relaciona.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/3.2">Ver resultados</a>
+  </div>
+
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col-md">
+    <p>
+      Relacione las entidades de las cuales se habla en la red social con otras entidades públicas, posiblemente no relacionadas con el dominio de aplicación. Por ejemplo, un cantante se relaciona con personajes políticos o noticias de relevancia y actualidad.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/3.3">Ver resultados</a>
+  </div>
+
+  <div class="col-md">
+    <p>
+        Relacione contenido multimedia con el contenido de que trata la pregunta. Por ejemplo, si encuentra canciones, debe enlazar con el contenido en Spotify y describir según los metadatos completos que provee esa fuente.
+    </p>
+    <a class="btn btn-primary" href="/taller-3/3.4">Ver resultados</a>
+  </div>
+</div>
+
+<% include partials/footer %>

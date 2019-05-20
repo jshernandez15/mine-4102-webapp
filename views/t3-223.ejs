@@ -1,0 +1,34 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Análisis de contenido en documentos semiestructurados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <h2>
+            De las entidades de dominio, identifique relaciones interesantes. Por ejemplo, si el tema es cine, un actor se relaciona con sus películas.
+        </h2>
+        <% personas.forEach(function(persona) { %>
+            <div>
+                <h3>
+                    <a href="<%= persona.person.value %>"><%= persona.name[0].value %></a>
+                    
+                </h3>
+                <% combinaciones.forEach(function(combi) { %>
+                    <% if(persona[combi.llave].length > 0){ %>
+                        <h5><%= combi.valor %></h5>
+                        <ul>
+                            <% persona.starredIn.forEach(function(el) { %>
+                            <li>
+                                <a href="<%= el.value%>"><%= el.value%></a>
+                            </li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                <% }) %>
+            </div>
+        <% }) %>        
+    </div>
+</div>
+<% include partials/footer %>

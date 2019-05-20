@@ -1,0 +1,23 @@
+<% include partials/head %>
+<div class="row">
+    <div class="col-lg">
+      <h1 class="mt-5">Integración y enriquecimiento semántico en tiempo real</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg">
+        <h2>
+            Para cada persona identificada, de ser posible encuentre su ubicación, fecha y lugar de nacimiento, género musical en el cual se destaca. Identifique su grupo familiar y las otras personas con las que se relaciona.
+        </h2>
+        <% personas.forEach(function(persona) { %>
+            <div style="border-left: 1px solid #000; margin-bottom: 15px; padding-left: 10px;">
+                <% combinaciones.forEach(function(combi) { %>
+                    <% if(combi.llave in persona){ %>
+                        <p><%= combi.valor %>: <%= persona[combi.llave].value %></p>
+                    <% } %>
+                <% }) %>
+            </div>
+        <% }) %>         
+    </div>
+</div>
+<% include partials/footer %>
